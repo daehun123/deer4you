@@ -142,8 +142,8 @@ const externalBooths = externalCompanyList.map(externalItemToBoothData);
 const schoolBooths = schoolBoothList.map(schoolItemToBoothData);
 
 export const dummyBooths: BoothData[] = [
+  ...schoolBooths,
   ...experienceBooths,
   ...foodTruckBooths,
   ...externalBooths,
-  ...schoolBooths,
 ];

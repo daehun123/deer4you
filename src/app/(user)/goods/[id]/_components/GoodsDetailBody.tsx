@@ -59,18 +59,21 @@ export default function GoodsDetailBody({ goodsId }: { goodsId: string }) {
       : goodsDetail.imageUrls?.[0] || null;
 
   return (
-    <div className="flex flex-col items-center gap-10">
+    <div className="flex w-full flex-col gap-10">
       {mainImageUrl ? (
-        <Image
-          src={mainImageUrl}
-          alt={goodsDetail.name}
-          width={400}
-          height={400}
-          priority
-          className="mt-4 w-auto h-auto max-w-100 max-h-100 object-cover"
-        />
+        <div className="mt-4 w-full bg-gray-100">
+          <Image
+            src={mainImageUrl}
+            alt={goodsDetail.name}
+            width={1024}
+            height={425}
+            sizes="(max-width: 448px) 100vw, 448px"
+            priority
+            className="h-auto w-full object-contain"
+          />
+        </div>
       ) : (
-        <div className="mt-4 w-100 h-100 bg-gray-200" />
+        <div className="mt-4 w-full bg-gray-200" />
       )}
       <GoodsDetailBoard goods={goodsDetail} />
     </div>

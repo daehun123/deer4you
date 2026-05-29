@@ -5,7 +5,7 @@ import React from "react";
 import { type LineupItem } from "../_data/scheduleData";
 
 function SkeletonPoster() {
-  return <div className="h-[158px] w-full rounded bg-gray-200" />;
+  return <div className="h-[158px] w-full rounded-xl bg-gray-200" />;
 }
 
 type Props = {
@@ -25,7 +25,7 @@ export default function LineupSection({ items }: Props) {
         {items.map((li, index) => (
           <div key={li.id}>
             {li.imageUrlSchedule ? (
-              <div className="relative h-[220px] w-full overflow-hidden rounded bg-gray-200">
+              <div className="relative h-[220px] w-full overflow-hidden rounded-xl bg-gray-200">
                 <Image
                   src={li.imageUrlSchedule}
                   alt={li.title}

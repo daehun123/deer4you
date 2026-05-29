@@ -14,6 +14,7 @@ export interface Goods {
 export interface GoodsDetail extends Goods {
   salesOpenTime: string;
   salesCloseTime: string;
+  caution: string;
 }
 
 export async function getGoods() {
@@ -28,11 +29,21 @@ export async function updateGoodsStatus(
   id: number,
   status: "ON_SALE" | "SOLD_OUT",
 ) {
-  return await apiFetchJson<null>(`/admin/goods/${id}/status`, {
+  const { adminFetch } = await import("@/api/admin/client");
+  const res = await adminFetch(`/admin/goods/${id}/status`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ status }),
   });
+
+  let data: null = null;
+  try {
+    await res.json();
+  } catch {
+    data = null;
+  }
+
+  return { status: res.status, ok: res.ok, data };
 }

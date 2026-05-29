@@ -16,6 +16,10 @@ export default function NoticeItem({ notice }: NoticeItemProps) {
     expandedId ? Number(expandedId) === notice.id : false,
   );
 
+  if (process.env.NODE_ENV === "development") {
+    console.log(notice);
+  }
+
   const dateObj = new Date(notice.createdAt);
   const formattedDate =
     dateObj
@@ -66,7 +70,7 @@ export default function NoticeItem({ notice }: NoticeItemProps) {
         }`}
       >
         <div className="overflow-hidden">
-          <div className="bg-custom-lightgray px-6.5 py-6 text-[15px] leading-relaxed text-custom-darkgray break-keep min-h-[80px]">
+          <div className="bg-custom-lightgray px-6.5 py-6 text-[15px] leading-relaxed text-custom-darkgray break-keep min-h-[80px] whitespace-pre-wrap">
             {notice.content}
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import FormLayout from "../_components/FormLayout";
 import { getEvent } from "@/api/events";
+import { getCautionTextForForm } from "@/app/(user)/event/_data/eventData";
 
 export default async function EditPage({
   params,
@@ -40,6 +41,7 @@ export default async function EditPage({
             ? event.imageUrls[0]
             : undefined
         }
+        caution={getCautionTextForForm(event)}
       />
     </div>
   );

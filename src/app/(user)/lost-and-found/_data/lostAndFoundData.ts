@@ -129,7 +129,7 @@ function mapLostItemDetailApiToLostItem(api: LostItemDetailApi): LostItem {
   const base = mapLostItemApiToLostItem(api);
   return {
     ...base,
-    foundAt: formatKoreanDateTime(api.foundTime ?? api.createdAt),
+    foundAt: api.foundTime ?? api.createdAt ?? "-",
     storageLocation: api.storageLocation ?? undefined,
     descriptionLines: toDescriptionLines(api.description),
   };

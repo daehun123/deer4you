@@ -35,9 +35,9 @@ function Thumbnail({
 }
 
 export default function EventListItem({ item, priority }: Props) {
-  const thumbSrc = item.imageUrl;
+  const thumbSrc = item.listThumbnailUrl ?? item.imageUrl;
   return (
-    <Link href={`/event/${item.id}`} className="flex gap-5">
+    <Link href={`/event/${item.id}`} className="flex items-start gap-5">
       {thumbSrc ? (
         <Thumbnail
           src={thumbSrc}
@@ -47,15 +47,17 @@ export default function EventListItem({ item, priority }: Props) {
       ) : (
         <div className="h-25 w-25 shrink-0 overflow-hidden rounded bg-gray-200" />
       )}
-      <div className="min-w-0 ">
-        <div className="text-[18px] font-bold text-custom-gray truncate">
+      <div className="min-w-0 flex flex-col">
+        <div className="text-[18px] font-bold leading-tight text-custom-gray truncate">
           {item.title}
         </div>
-        <div className="mt-2 flex flex-col gap-1  text-[12px] font-semibold text-custom-gray opacity-40">
-          <div className="mt-2.5 flex items-center gap-1">
-            <span>운영 시간 :</span>
-            <span>{item.timeRange}</span>
-          </div>
+        <div className="mt-[11px] flex flex-col gap-1 text-[12px] font-semibold text-custom-gray opacity-40">
+          {!item.hideTimeRange ? (
+            <div className="flex items-center gap-1">
+              <span>운영 시간 :</span>
+              <span>{item.timeRange}</span>
+            </div>
+          ) : null}
           <div className="flex items-center gap-1">
             <span>장소 :</span>
             <span className="truncate">{item.location}</span>

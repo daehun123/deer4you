@@ -13,7 +13,7 @@ export default function BoothItem({ booth }: BoothItemProps) {
 
   return (
     <div
-      className="cursor-pointer hover:shadow-lg rounded-xl overflow-hidden w-full flex flex-col"
+      className="cursor-pointer touch-manipulation rounded-xl overflow-hidden w-full flex flex-col transition-shadow hover:shadow-lg active:shadow-lg"
       onClick={() => {
         if (booth.category === "푸드트럭") {
           router.push(`/booths/foodtrucks/${booth.id - 100}`);

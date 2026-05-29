@@ -42,8 +42,7 @@ export default function NoticeTicker() {
         }
 
         const data = await response.json();
-        const pinnedNotices = data.filter((notice: Notice) => notice.pinned);
-        setNotices(pinnedNotices);
+        setNotices(data);
       } catch (error) {
         console.error("공지사항을 가져오는데 실패했습니다:", error);
       }

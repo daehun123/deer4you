@@ -13,7 +13,7 @@ export default function LostAndFoundSearchInput({ value, onChange }: Props) {
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder="제목을 입력하세요"
+        placeholder="검색어를 입력해주세요..."
         className="h-10 w-full rounded bg-custom-lightgray px-3 text-[14px] font-semibold text-custom-gray placeholder:text-custom-darkgray outline-none"
       />
     </div>

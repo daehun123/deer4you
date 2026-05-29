@@ -5,10 +5,12 @@ export default function SectionLayout({
   title,
   link,
   children,
+  scrollable = true,
 }: {
   title: string;
   link: string;
   children: React.ReactNode;
+  scrollable?: boolean;
 }) {
   return (
     <div className="p-6.5 gap-4 flex flex-col">
@@ -18,7 +20,13 @@ export default function SectionLayout({
           전체보기
         </Link>
       </div>
-      <div className="flex overflow-x-auto gap-4.5 scrollbar-hide snap-x">
+      <div
+        className={
+          scrollable
+            ? "flex overflow-x-auto gap-4.5 scrollbar-hide snap-x"
+            : "flex justify-between"
+        }
+      >
         {children}
       </div>
     </div>

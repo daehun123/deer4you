@@ -5,7 +5,7 @@ import type { FestivalListItem } from "./types";
 export const foodTruckList: FestivalListItem[] = [
   {
     id: 1,
-    boothNo: 1,
+    boothNo: 25,
     zone: "C",
     name: "꼬지촌",
     time: "11:00 ~ 22:00",
@@ -16,7 +16,7 @@ export const foodTruckList: FestivalListItem[] = [
   },
   {
     id: 2,
-    boothNo: 2,
+    boothNo: 26,
     zone: "C",
     name: "프라이데이",
     time: "11:00 ~ 22:00",
@@ -30,7 +30,7 @@ export const foodTruckList: FestivalListItem[] = [
   },
   {
     id: 8,
-    boothNo: 3,
+    boothNo: 27,
     zone: "C",
     name: "딜리푸드",
     time: "11:00 ~ 22:00",
@@ -44,7 +44,7 @@ export const foodTruckList: FestivalListItem[] = [
   },
   {
     id: 5,
-    boothNo: 4,
+    boothNo: 28,
     zone: "C",
     name: "요기푸드",
     time: "11:00 ~ 22:00",
@@ -58,7 +58,7 @@ export const foodTruckList: FestivalListItem[] = [
   },
   {
     id: 7,
-    boothNo: 5,
+    boothNo: 51,
     zone: "C",
     name: "행복츄러스",
     time: "11:00 ~ 22:00",
@@ -72,7 +72,7 @@ export const foodTruckList: FestivalListItem[] = [
   },
   {
     id: 9,
-    boothNo: 6,
+    boothNo: 52,
     zone: "C",
     name: "로드리",
     time: "11:00 ~ 22:00",
@@ -86,7 +86,7 @@ export const foodTruckList: FestivalListItem[] = [
   },
   {
     id: 3,
-    boothNo: 7,
+    boothNo: 53,
     zone: "C",
     name: "고수",
     time: "11:00 ~ 22:00",
@@ -101,7 +101,7 @@ export const foodTruckList: FestivalListItem[] = [
   },
   {
     id: 4,
-    boothNo: 8,
+    boothNo: 54,
     zone: "C",
     name: "뿌자2",
     time: "11:00 ~ 22:00",
@@ -115,7 +115,7 @@ export const foodTruckList: FestivalListItem[] = [
   },
   {
     id: 10,
-    boothNo: 9,
+    boothNo: 55,
     zone: "C",
     name: "정성초밥",
     time: "11:00 ~ 22:00",
@@ -129,7 +129,7 @@ export const foodTruckList: FestivalListItem[] = [
   },
   {
     id: 6,
-    boothNo: 10,
+    boothNo: 56,
     zone: "C",
     name: "요기푸드",
     time: "11:00 ~ 22:00",

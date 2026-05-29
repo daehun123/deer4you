@@ -55,6 +55,10 @@ export default function MapPage() {
 
   const experienceSheetItems = useMemo(
     () => [
+      ...schoolBoothList.map((item) => ({
+        item,
+        href: `/booths/${item.id + SCHOOL_BOOTH_ID_OFFSET}`,
+      })),
       ...experienceList.map((item) => ({
         item,
         href: `/booths/${item.id}`,
@@ -62,10 +66,6 @@ export default function MapPage() {
       ...externalCompanyList.map((item) => ({
         item,
         href: `/booths/${item.id + EXTERNAL_BOOTH_ID_OFFSET}`,
-      })),
-      ...schoolBoothList.map((item) => ({
-        item,
-        href: `/booths/${item.id + SCHOOL_BOOTH_ID_OFFSET}`,
       })),
     ],
     [],

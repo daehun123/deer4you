@@ -23,7 +23,7 @@ export default function LostAndFoundCategoryTabs({ value, onChange }: Props) {
               type="button"
               onClick={() => onChange(c)}
               className={[
-                "shrink-0 rounded-full px-2.5 py-1 text-[16px] font-bold transition-colors",
+                "shrink-0 rounded-full px-4 py-2 text-[16px] font-bold transition-colors",
                 active
                   ? "bg-custom-blue text-white"
                   : "bg-transparent text-custom-gray opacity-70 hover:opacity-100",
@@ -37,4 +37,3 @@ export default function LostAndFoundCategoryTabs({ value, onChange }: Props) {
     </div>
   );
 }
-

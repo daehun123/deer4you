@@ -8,7 +8,7 @@ export default function StatusChip({ status }: { status: LostItem["status"] }) {
   return (
     <span
       className={[
-        "inline-flex items-center justify-center rounded-md px-2 py-1 text-[12px] font-bold",
+        "px-4 py-2 shrink-0 whitespace-nowrap rounded-4xl cursor-pointer text-[14px] font-semibold",
         active ? "bg-custom-blue text-white" : "bg-[#ECEEF0] text-black",
       ].join(" ")}
     >
@@ -16,4 +16,3 @@ export default function StatusChip({ status }: { status: LostItem["status"] }) {
     </span>
   );
 }
-

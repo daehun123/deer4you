@@ -32,6 +32,13 @@ const CATEGORIES: { key: string; label: string }[] = [
   { key: "OTHER", label: "기타" },
 ];
 
+function hasUnsafeImageFileName(fileName: string): boolean {
+  return /[^\x00-\x7F]/.test(fileName) || /\s/.test(fileName);
+}
+
+const UNSAFE_IMAGE_FILE_NAME_MESSAGE =
+  "파일명에 한글이나 공백이 포함되어 있습니다.\n영문·숫자·기호(-, _, .)만 사용하는 이름으로 변경한 뒤 다시 선택해주세요.";
+
 export default function FormLayout({
   lostId,
   itemName,
@@ -56,10 +63,16 @@ export default function FormLayout({
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      const previewUrl = URL.createObjectURL(file);
-      setImgPreview(previewUrl);
+    if (!file) return;
+
+    if (hasUnsafeImageFileName(file.name)) {
+      alert(UNSAFE_IMAGE_FILE_NAME_MESSAGE);
+      e.target.value = "";
+      return;
     }
+
+    const previewUrl = URL.createObjectURL(file);
+    setImgPreview(previewUrl);
   };
 
   // 등록 및 수정 핸들러
@@ -97,6 +110,12 @@ export default function FormLayout({
 
     if (!imgPreview && (!image || image.size === 0)) {
       alert("사진을 첨부해주세요.");
+      setSubmitDisabled(false);
+      return;
+    }
+
+    if (image && image.size > 0 && hasUnsafeImageFileName(image.name)) {
+      alert(UNSAFE_IMAGE_FILE_NAME_MESSAGE);
       setSubmitDisabled(false);
       return;
     }

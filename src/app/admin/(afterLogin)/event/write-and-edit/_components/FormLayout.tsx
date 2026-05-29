@@ -16,6 +16,7 @@ interface FormLayoutProps {
   prizeText?: string;
   prizeImageUrl?: string;
   mainImageUrl?: string;
+  caution?: string;
 }
 
 export default function FormLayout({
@@ -29,6 +30,7 @@ export default function FormLayout({
   prizeText,
   prizeImageUrl,
   mainImageUrl,
+  caution,
 }: FormLayoutProps) {
   const [mainImgPreview, setMainImgPreview] = React.useState<string | null>(
     mainImageUrl || null,
@@ -68,6 +70,7 @@ export default function FormLayout({
     const description = formData.get("description")?.toString().trim();
     const method = formData.get("method")?.toString().trim();
     const prizeText = formData.get("prizeText")?.toString().trim();
+    const cautionText = formData.get("caution")?.toString().trim();
 
     if (!title) {
       alert("제목을 입력해주세요.");
@@ -111,6 +114,7 @@ export default function FormLayout({
         content: method,
         contentType: prizeCategory === "category2" ? "IMAGE" : "TEXT",
         productDescription: prizeText || "",
+        caution: cautionText || null,
         startTime: startTime.length === 16 ? `${startTime}:00` : startTime,
         endTime: endTime.length === 16 ? `${endTime}:00` : endTime,
         location: location,
@@ -308,6 +312,12 @@ export default function FormLayout({
           </section>
         )}
       </div>
+      <textarea
+        name="caution"
+        placeholder="이벤트 유의사항을 입력하세요 (줄바꿈으로 항목 구분)"
+        className="w-full p-2 border border-gray-300 rounded-md min-h-32 bg-custom-lightgray"
+        defaultValue={caution || ""}
+      />
       <div className=" justify-end flex gap-4">
         <button
           type="button"

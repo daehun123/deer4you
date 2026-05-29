@@ -19,7 +19,7 @@ export default function DateTabs({ days, selectedDate, onSelect }: Props) {
             type="button"
             onClick={() => onSelect(d.date)}
             className={[
-              "rounded-full h-8 px-2.5 py-1 text-[16px] font-bold transition-colors items-center",
+              "px-4 py-2 shrink-0 whitespace-nowrap rounded-4xl cursor-pointer text-[16px] font-semibold",
               active
                 ? "bg-custom-blue text-white"
                 : "bg-custom-lightgray text-custom-darkgray",

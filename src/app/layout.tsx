@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
   title: "Deer for U: ARCHIVE",
@@ -31,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="bg-gray-100 antialiased">{children}</body>
+      <GoogleTagManager gtmId="GTM-N7MTFGSF" />
     </html>
   );
 }

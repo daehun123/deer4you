@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { FestivalListItem } from "@/data/festival/types";
+import { getBoothPlaces } from "@/data/festival/boothPlaceUtils";
 import MiniMap from "../[id]/_components/MiniMap";
 
 type Props = {
@@ -11,6 +12,8 @@ export default function FestivalBoothDetailView({
   item,
   categoryLabel,
 }: Props) {
+  const boothPlaces = getBoothPlaces(item);
+
   return (
     <div className="px-6 pb-24 flex flex-col gap-6">
       <div className="relative w-full overflow-hidden aspect-video">
@@ -18,7 +21,7 @@ export default function FestivalBoothDetailView({
           src={item.imageUrl}
           alt={item.name}
           fill
-          className="object-contain object-left"
+          className="object-cover"
           sizes="(max-width: 448px) 100vw, 400px"
           priority
         />
@@ -35,7 +38,18 @@ export default function FestivalBoothDetailView({
           </div>
 
           <p className="text-custom-darkgray text-[16px] pt-4">{item.time}</p>
-          <p className="text-custom-darkgray text-[16px]">{item.location}</p>
+          {boothPlaces.length > 1 ? (
+            boothPlaces.map((place) => (
+              <p
+                key={`${place.zone}-${place.location}`}
+                className="text-custom-darkgray text-[16px]"
+              >
+                {place.location}
+              </p>
+            ))
+          ) : (
+            <p className="text-custom-darkgray text-[16px]">{item.location}</p>
+          )}
           <p className="mt-4 text-[14px] leading-relaxed whitespace-pre-wrap text-custom-darkgray bg-custom-lightgray p-4 rounded-lg">
             {item.description}
           </p>
@@ -61,12 +75,25 @@ export default function FestivalBoothDetailView({
             </div>
           )}
         </div>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-6">
           <h2 className="text-[20px] font-semibold">시설 정보</h2>
-          <MiniMap boothNo={item.boothNo} zone={item.zone} />
-          <p className="text-[14px] text-[#252528]">
-            상명대학교 천안캠퍼스 {item.boothNo}번 부스
-          </p>
+          {boothPlaces.map((place) => (
+            <div
+              key={`${place.zone}-${place.location}`}
+              className="flex flex-col gap-3"
+            >
+              <MiniMap
+                boothNo={place.boothNo}
+                zone={place.zone}
+                location={place.location}
+              />
+              {place.boothNo != null && (
+                <p className="text-[14px] text-[#252528]">
+                  상명대학교 천안캠퍼스 {place.boothNo}번 부스
+                </p>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </div>

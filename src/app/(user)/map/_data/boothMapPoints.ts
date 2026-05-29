@@ -153,16 +153,16 @@ export const boothMapPoints: BoothMapPoint[] = [
   {
     // 프홀 뒤?
     id: 15,
-    name: "흡연구역 3",
-    category: "흡연구역",
-    location: "흡연구역",
+    name: "금연구역 3",
+    category: "금연구역",
+    location: "금연구역",
     lat: 36.8333,
     lng: 127.1783,
   },
   {
     // 한누리
     id: 16,
-    name: "흡연구역 4",
+    name: "흡연구역 3",
     category: "흡연구역",
     location: "흡연구역",
     lat: 36.834065,
@@ -171,7 +171,7 @@ export const boothMapPoints: BoothMapPoint[] = [
   {
     // 식당앞
     id: 17,
-    name: "흡연구역 5",
+    name: "흡연구역 4",
     category: "흡연구역",
     location: "흡연구역",
     lat: 36.8335,
@@ -180,7 +180,7 @@ export const boothMapPoints: BoothMapPoint[] = [
   {
     // 흡연구역
     id: 18,
-    name: "흡연구역 6",
+    name: "흡연구역 5",
     category: "흡연구역",
     location: "흡연구역",
     lat: 36.832339,

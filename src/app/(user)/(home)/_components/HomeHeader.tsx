@@ -39,7 +39,7 @@ export default function HomeHeader() {
   return (
     <div onClick={handleClick} className="px-7.5 pt-8 pb-2.25 relative">
       <Image
-        src="/logo.svg"
+        src="/logo.png"
         priority
         alt="DeerForY Logo"
         width={500}

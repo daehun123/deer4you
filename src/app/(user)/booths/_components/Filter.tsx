@@ -2,14 +2,16 @@
 import React from "react";
 import FilterItem from "./FilterItem";
 
-const defaultFilters = [
+export const BOOTH_FILTERS = [
   "전체",
   "학과",
   "동아리",
   "외부업체",
   "푸드트럭",
   "총학부스",
-];
+] as const;
+
+export type BoothFilter = (typeof BOOTH_FILTERS)[number];
 
 interface FilterProps {
   onFilterChange: (filter: string) => void;
@@ -22,9 +24,9 @@ export default function Filter({
   activeFilter,
   filters,
 }: FilterProps) {
-  const list = filters ?? defaultFilters;
+  const list = filters ?? [...BOOTH_FILTERS];
   return (
-    <div className="flex overflow-x-auto gap-3 scrollbar-hide snap-x">
+    <div className="flex overflow-x-auto gap-2 scrollbar-hide snap-x">
       {list.map((filter) => (
         <FilterItem
           key={filter}

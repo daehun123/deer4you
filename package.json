@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@next/third-parties": "^16.2.6",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "js-cookie": "^3.0.5",

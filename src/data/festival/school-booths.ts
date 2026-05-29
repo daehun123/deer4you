@@ -5,7 +5,7 @@ import type { FestivalListItem } from "./types";
 export const schoolBoothList: FestivalListItem[] = [
   {
     id: 1,
-    boothNo: 6,
+    boothNo: 9,
     zone: "A",
     host: "총학생회",
     name: "오락실 부스",
@@ -17,11 +17,11 @@ export const schoolBoothList: FestivalListItem[] = [
       { name: "펀치 1회", price: "1,000원" },
       { name: "타이머 맞추기 1회", price: "1,000원" },
     ],
-    imageUrl: "/map/school/school-1.webp",
+    imageUrl: "/map/school/school-1-final.webp",
   },
   {
     id: 2,
-    boothNo: 7,
+    boothNo: 10,
     zone: "A",
     host: "총학생회",
     name: "숨겨둔 편지",
@@ -34,13 +34,14 @@ export const schoolBoothList: FestivalListItem[] = [
   },
   {
     id: 3,
-    boothNo: 7,
+    boothNo: 10,
     zone: "A",
     host: "총학생회",
     name: "폴라로이드",
     time: "DAY 1 11:30 ~ 17:00 · DAY 2 11:30 ~ 17:00",
     location: "소나무숲 앞 A-3-12",
-    description: "폴라로이드",
-    imageUrl: "/map/school/school-3.webp",
+    description: "축제의 소중한 시간,한장의 추억으로 간직하세요!",
+    menu: [{ name: "폴라로이드 사진 1장", price: "" }],
+    imageUrl: "/map/school/school-3-final.webp",
   },
 ];

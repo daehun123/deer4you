@@ -27,7 +27,7 @@ export type LostItemApi = {
 
 export type LostItemDetailApi = LostItemApi & {
   description: string | null;
-  foundTime: string | null; // ISO
+  foundTime: string | null;
   storageLocation: string | null;
   updatedAt: string;
 };

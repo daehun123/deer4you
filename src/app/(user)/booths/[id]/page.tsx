@@ -3,7 +3,7 @@ import {
   externalCompanyList,
   schoolBoothList,
 } from "@/data/festival";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import {
   EXTERNAL_BOOTH_ID_OFFSET,
   SCHOOL_BOOTH_ID_OFFSET,
@@ -18,6 +18,11 @@ export default async function BoothDetailPage({
   const { id } = await params;
   const n = Number(id);
   if (!Number.isFinite(n) || !Number.isInteger(n)) notFound();
+
+  // 통합 전 추가 구역 포토이즘(id: 2) → 통합 포토이즘(id: 1)
+  if (n === 2 + EXTERNAL_BOOTH_ID_OFFSET) {
+    redirect(`/booths/${1 + EXTERNAL_BOOTH_ID_OFFSET}`);
+  }
 
   const externalItem = externalCompanyList.find(
     (b) => b.id + EXTERNAL_BOOTH_ID_OFFSET === n,

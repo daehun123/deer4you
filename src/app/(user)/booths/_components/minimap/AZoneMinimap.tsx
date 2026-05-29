@@ -1,34 +1,35 @@
 "use client";
 
 type BoothSlot = {
-  /** 지도 표시 번호 (1–13, boothNo와 매칭) */
   label: string;
   x: number;
   y: number;
+  width: number;
 };
 
-/** A구역(소나무숲) 부스 — 지도 좌표 기준 좌→우 */
+const BOOTH_HEIGHT = 25.6541;
+
+/** A구역(소나무숲) — Azone-final.svg 좌표, 상단 4–10 · 하단 34–39 */
 const TOP_ROW: BoothSlot[] = [
-  { label: "1", x: 170.389, y: 129.091 },
-  { label: "2", x: 189.822, y: 129.091 },
-  { label: "3", x: 209.256, y: 129.091 },
-  { label: "4", x: 227.916, y: 129.091 },
-  { label: "5", x: 247.35, y: 129.091 },
-  { label: "6", x: 266.008, y: 129.091 },
-  { label: "7", x: 284.686, y: 129.389 },
+  { label: "4", x: 164.389, y: 85.3887, width: 14.7705 },
+  { label: "5", x: 183.822, y: 85.3887, width: 14.7705 },
+  { label: "6", x: 203.256, y: 85.3887, width: 14.7705 },
+  { label: "7", x: 221.916, y: 85.3887, width: 14.7705 },
+  { label: "8", x: 241.35, y: 85.3887, width: 14.7705 },
+  { label: "9", x: 260.008, y: 85.3887, width: 14.7705 },
+  { label: "10", x: 278.686, y: 85.6866, width: 14.7705 },
 ];
 
 const BOTTOM_ROW: BoothSlot[] = [
-  { label: "8", x: 170.389, y: 178.389 },
-  { label: "9", x: 189.822, y: 178.389 },
-  { label: "10", x: 208.252, y: 178.389 },
-  { label: "11", x: 227.252, y: 178.389 },
-  { label: "12", x: 246.252, y: 178.389 },
-  { label: "13", x: 265.389, y: 178.389 },
+  { label: "34", x: 164.389, y: 134.687, width: 14.7705 },
+  { label: "35", x: 183.822, y: 134.687, width: 14.7705 },
+  { label: "36", x: 202.252, y: 134.687, width: 14.7705 },
+  { label: "37", x: 221.252, y: 134.687, width: 14.7705 },
+  { label: "38", x: 240.252, y: 134.687, width: 14.7705 },
+  { label: "39", x: 259.389, y: 134.687, width: 14.7705 },
 ];
 
-const BOOTH_WIDTH = 14.7705;
-const BOOTH_HEIGHT = 25.6541;
+const ALL_SLOTS = [...TOP_ROW, ...BOTTOM_ROW];
 
 type Props = {
   activeSlotId?: string | null;
@@ -36,13 +37,12 @@ type Props = {
 
 function BoothSlotShape({
   slot,
-  activeSlotId,
+  isActive,
 }: {
   slot: BoothSlot;
-  activeSlotId?: string | null;
+  isActive: boolean;
 }) {
-  const isActive = activeSlotId === slot.label;
-  const cx = slot.x + BOOTH_WIDTH / 2;
+  const cx = slot.x + slot.width / 2;
   const cy = slot.y + BOOTH_HEIGHT / 2;
 
   return (
@@ -55,7 +55,7 @@ function BoothSlotShape({
         className="booth-fill"
         x={slot.x}
         y={slot.y}
-        width={BOOTH_WIDTH}
+        width={slot.width}
         height={BOOTH_HEIGHT}
         rx={0.5}
       />
@@ -115,27 +115,25 @@ export default function AZoneMinimap({ activeSlotId }: Props) {
 
       <rect width="350" height="230" fill="white" />
 
-      {/* 한누리관 */}
       <path
-        d="M51.2432 76.8755L52.3105 115.905C66.7688 116.185 99.5732 116.759 115.124 116.82C130.675 116.881 151.13 115.168 159.414 114.304L158.499 78.0187L51.2432 76.8755Z"
+        d="M26.4796 33.5822L27.5469 72.612C42.0052 72.8915 74.8095 73.4657 90.3604 73.5267C105.911 73.5876 126.366 71.8749 134.65 71.011L133.735 34.7254L26.4796 33.5822Z"
         fill="#E4E4E4"
         stroke="#E9E9E8"
         strokeWidth="0.777397"
       />
       <text
         className="area-label"
-        x="105"
-        y="98"
+        x="80"
+        y="55"
         textAnchor="middle"
         dominantBaseline="middle"
       >
         한누리관
       </text>
 
-      {/* 소나무숲 */}
       <rect
-        x="171.092"
-        y="78.5601"
+        x="192.092"
+        y="35.2669"
         width="111.168"
         height="33.4281"
         fill="#F8F8F6"
@@ -144,34 +142,41 @@ export default function AZoneMinimap({ activeSlotId }: Props) {
       />
       <text
         className="area-label"
-        x="226.7"
-        y="95.3"
+        x="247.7"
+        y="52"
         textAnchor="middle"
         dominantBaseline="middle"
       >
         소나무숲
       </text>
 
-      <path
-        d="M51.2432 20.2363L52.3105 59.2661C66.7688 59.5456 99.5732 60.1198 115.124 60.1807C130.675 60.2417 151.13 58.529 159.414 57.665L158.499 21.3795L51.2432 20.2363Z"
+      <rect
+        x="118.611"
+        y="85.3887"
+        width="58.2226"
+        height="21.2226"
+        transform="rotate(90 118.611 85.3887)"
         fill="#F8F8F6"
-        stroke="#E9E9E8"
+        stroke="#DBDBDB"
         strokeWidth="0.777397"
       />
+      <text
+        className="area-label"
+        x="129"
+        y="92"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        transform="rotate(-90 129 112)"
+      >
+        계단
+      </text>
 
       <g id="booths" data-zone="A">
-        {TOP_ROW.map((slot) => (
+        {ALL_SLOTS.map((slot) => (
           <BoothSlotShape
             key={slot.label}
             slot={slot}
-            activeSlotId={activeSlotId}
-          />
-        ))}
-        {BOTTOM_ROW.map((slot) => (
-          <BoothSlotShape
-            key={slot.label}
-            slot={slot}
-            activeSlotId={activeSlotId}
+            isActive={activeSlotId === slot.label}
           />
         ))}
       </g>

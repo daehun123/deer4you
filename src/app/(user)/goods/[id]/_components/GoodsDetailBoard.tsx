@@ -15,9 +15,20 @@ export default function GoodsDetailBoard({ goods }: GoodsDetailBoardProps) {
     status,
     salesOpenTime,
     salesCloseTime,
+    caution,
   } = goods;
   const isSoldOut = status === "SOLD_OUT";
-  const salesTime = `${salesOpenTime} - ${salesCloseTime}`;
+  const cautionItems = caution
+    .split(/\r?\n/)
+    .flatMap((line) => line.split("."))
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  const timeFormat = (time: string) => {
+    const [hours, minutes] = time.split(":").map(Number);
+    return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
+  };
+  const salesTime = `${timeFormat(salesOpenTime)} - ${timeFormat(salesCloseTime)}`;
 
   return (
     <div className="px-5.25 flex flex-col gap-2.5">
@@ -50,17 +61,20 @@ export default function GoodsDetailBoard({ goods }: GoodsDetailBoardProps) {
         </div>
       </div>
 
-      <p className="mt-2.5 text-lg font-semibold flex justify-between">
+      <p className="mt-2.5 text-lg font-semibold flex justify-between border-b pb-2.5 border-[#ECEFF0]">
         <span>가격</span> {price}원
       </p>
-      <section>
+      <section className="mb-8">
         <h3 className="font-bold">굿즈 구매시 유의사항</h3>
-        <ul className="list-disc list-inside mt-2.5 text-[14px] text-custom-darkgray">
-          <li>굿즈는 선착순으로 판매됩니다.</li>
-          <li>굿즈는 현금으로만 구매 가능합니다.</li>
-          <li>굿즈 구매 후 환불은 불가능합니다.</li>
-          <li>굿즈는 재고 소진 시 판매가 종료됩니다.</li>
-        </ul>
+        {cautionItems.length > 0 && (
+          <ul className="list-disc list-outside pl-5 mt-2.5 text-[14px] text-custom-darkgray space-y-1">
+            {cautionItems.map((item, index) => (
+              <li key={`${index}-${item}`} className="pl-1 whitespace-pre-line">
+                {item}
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
     </div>
   );

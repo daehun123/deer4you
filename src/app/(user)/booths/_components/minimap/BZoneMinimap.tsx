@@ -1,15 +1,10 @@
 "use client";
 
-import { experienceList } from "@/data/festival/experiences";
-import { externalCompanyList } from "@/data/festival/external-company";
-import type { FestivalListItem } from "@/data/festival/types";
-
 type BZoneSlot = {
   label: string;
   x: number;
   y: number;
   width: number;
-  locationKey?: string;
 };
 
 const BOOTH_HEIGHT = 25.6541;
@@ -50,72 +45,34 @@ const BOTTOM_ROW: { x: number; y: number }[] = [
   { x: 246.156, y: 163.337 },
 ];
 
-const BOTTOM_WIDTH = 14.7705;
-
-const ISOLATED_ROW: BZoneSlot[] = [
-  {
-    label: "5",
-    x: 313.014,
-    y: 163.337,
-    width: BOTTOM_WIDTH,
-    locationKey: "A-1-5",
-  },
-  {
-    label: "6",
-    x: 332.447,
-    y: 163.337,
-    width: BOTTOM_WIDTH,
-    locationKey: "A-1-6",
-  },
+const ISOLATED_ROW: { x: number; y: number }[] = [
+  { x: 313.014, y: 163.337 },
+  { x: 332.447, y: 163.337 },
 ];
 
-/** B구역 전체 부스 슬롯 (1–14, 15–25, 우측 5·6) */
+const BOTTOM_WIDTH = 14.7705;
+
+/** B구역 부스 슬롯 — Bzone-final.svg 좌표, 라벨 11–24 · 40–52 */
 const ALL_SLOTS: BZoneSlot[] = [
-  ...TOP_ROW.map((coord, i) => {
-    const mapNo = i + 1;
-    return {
-      label: String(mapNo),
-      x: coord.x,
-      y: coord.y,
-      width: TOP_WIDTHS[i],
-      locationKey: mapNo === 5 || mapNo === 6 ? undefined : `A-1-${mapNo}`,
-    };
-  }),
+  ...TOP_ROW.map((coord, i) => ({
+    label: String(11 + i),
+    x: coord.x,
+    y: coord.y,
+    width: TOP_WIDTHS[i],
+  })),
   ...BOTTOM_ROW.map((coord, i) => ({
-    label: String(15 + i),
+    label: String(40 + i),
     x: coord.x,
     y: coord.y,
     width: BOTTOM_WIDTH,
-    locationKey: `A-2-${i + 1}`,
   })),
-  ...ISOLATED_ROW,
+  ...ISOLATED_ROW.map((coord, i) => ({
+    label: String(51 + i),
+    x: coord.x,
+    y: coord.y,
+    width: BOTTOM_WIDTH,
+  })),
 ];
-
-function parseLocationKey(location?: string): string | null {
-  if (!location) return null;
-  const match = location.match(/A-\d+-\d+/);
-  return match ? match[0] : null;
-}
-
-function findBZoneBooth(
-  activeSlotId: string,
-): FestivalListItem | undefined {
-  const match = (item: FestivalListItem) =>
-    item.zone === "B" &&
-    item.boothNo != null &&
-    String(item.boothNo) === activeSlotId;
-
-  return (
-    experienceList.find(match) ?? externalCompanyList.find(match)
-  );
-}
-
-function resolveActiveLocation(activeSlotId?: string | null): string | null {
-  if (!activeSlotId) return null;
-
-  const booth = findBZoneBooth(activeSlotId);
-  return parseLocationKey(booth?.location);
-}
 
 type Props = {
   activeSlotId?: string | null;
@@ -133,9 +90,8 @@ function BoothSlotShape({
 
   return (
     <g
-      id={`booth-${slot.label}${slot.locationKey ? `-${slot.locationKey}` : ""}`}
+      id={`booth-${slot.label}`}
       data-booth-no={slot.label}
-      data-location={slot.locationKey}
       className={isActive ? "is-active" : undefined}
     >
       <rect
@@ -160,8 +116,6 @@ function BoothSlotShape({
 }
 
 export default function BZoneMinimap({ activeSlotId }: Props) {
-  const activeLocation = resolveActiveLocation(activeSlotId);
-
   return (
     <svg
       viewBox="0 0 350 230"
@@ -204,7 +158,6 @@ export default function BZoneMinimap({ activeSlotId }: Props) {
 
       <rect width="350" height="230" fill="white" />
 
-      {/* 학생회관 */}
       <path
         d="M75.5169 52.9469H56.8594C66.9655 2.41617 63.856 -46.9487 61.1351 -72.9915C58.9583 -93.8257 58.9324 -105.253 59.1916 -108.363C64.4779 -143.812 97.9319 -152.675 113.998 -152.675C195.236 -156.95 360.977 -165.579 374.037 -165.89C387.098 -166.201 391.399 -150.731 391.918 -142.957C395.649 -128.342 385.18 -124.947 379.479 -125.077L383.366 -113.805L272.587 -108.363C288.757 -87.5288 290.467 -62.6261 289.301 -52.7791H269.866V-34.5103L249.654 -37.6199L243.435 -20.1284L254.318 -12.7431C246.544 1.87192 235.272 12.2631 230.608 15.6319C198.579 45.4839 146.001 37.399 123.716 29.625L108.556 40.5086L75.5169 43.6181V52.9469Z"
         fill="#F8F8F6"
@@ -239,7 +192,6 @@ export default function BZoneMinimap({ activeSlotId }: Props) {
         학생회관
       </text>
 
-      {/* 운동장 */}
       <path
         d="M369.48 206.483H56.082V257.791H413.685C413.685 218.113 384.215 207.053 369.48 206.483Z"
         fill="#F8F8F6"
@@ -257,17 +209,13 @@ export default function BZoneMinimap({ activeSlotId }: Props) {
       </text>
 
       <g id="booths" data-zone="B">
-        {ALL_SLOTS.map((slot) => {
-          const isActive =
-            activeLocation != null && slot.locationKey === activeLocation;
-          return (
-            <BoothSlotShape
-              key={`${slot.label}-${slot.x}-${slot.y}`}
-              slot={slot}
-              isActive={isActive}
-            />
-          );
-        })}
+        {ALL_SLOTS.map((slot) => (
+          <BoothSlotShape
+            key={`${slot.label}-${slot.x}-${slot.y}`}
+            slot={slot}
+            isActive={activeSlotId === slot.label}
+          />
+        ))}
       </g>
     </svg>
   );

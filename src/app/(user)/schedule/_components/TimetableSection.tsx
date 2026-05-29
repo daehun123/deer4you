@@ -14,7 +14,6 @@ function formatDetailTimeRange(
 }
 
 const expandableTitles = new Set([
-  "동아리 리허설",
   "동아리 공연",
   "동아리공연",
   "총학생회 이벤트",

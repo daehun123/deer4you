@@ -16,6 +16,7 @@ export type EventApiDetailItem = EventApiItem & {
   content: string | null;
   contentType?: string;
   productDescription?: string | null;
+  caution: string | null;
   contentImageUrls?: string[];
   updatedAt: string;
 };
@@ -26,11 +27,7 @@ export async function getEvents(options?: { revalidate?: number }) {
   });
   if (!res.ok) throw new Error(`이벤트 목록 조회 실패 (${res.status})`);
 
-  if (process.env.NODE_ENV !== "production") {
-    console.log("[events] raw response:", res.data);
-  }
-
-  return res.data ?? [];
+  return [...(res.data ?? [])].reverse();
 }
 
 export async function getEvent(id: string, options?: { revalidate?: number }) {
@@ -40,10 +37,6 @@ export async function getEvent(id: string, options?: { revalidate?: number }) {
 
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(`이벤트 상세 조회 실패 (${res.status})`);
-
-  if (process.env.NODE_ENV !== "production") {
-    console.log("[events] raw detail response:", res.data);
-  }
 
   return res.data;
 }
