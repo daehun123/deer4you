@@ -1,0 +1,38 @@
+<svg width="350" height="230" viewBox="0 0 350 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .booth-fill { fill: #E4E4E4; stroke: #DBDBDB; stroke-width: 0.777397; }
+      .booth-fill.is-active { fill: #0B89FF; stroke: #0B89FF; stroke-width: 1.1; }
+      .booth-label { fill: #808080; font-size: 9px; font-weight: 700; font-family: system-ui, sans-serif; pointer-events: none; }
+      g.is-active .booth-label { fill: #FFFFFF; }
+      .area-label { fill: #9B9B9B; font-size: 7.5px; font-weight: 600; font-family: system-ui, sans-serif; pointer-events: none; }
+    </style>
+  </defs>
+  <rect width="350" height="230" fill="white"/>
+
+  <text class="area-label" x="8" y="12" font-size="8" font-weight="700">A구역</text>
+
+  <path d="M51.2432 76.8755L52.3105 115.905C66.7688 116.185 99.5732 116.759 115.124 116.82C130.675 116.881 151.13 115.168 159.414 114.304L158.499 78.0187L51.2432 76.8755Z" fill="#E4E4E4" stroke="#E9E9E8" stroke-width="0.777397"/>
+  <text class="area-label" x="105" y="98" text-anchor="middle" dominant-baseline="middle">한누리관</text>
+
+  <rect x="171.092" y="78.5601" width="111.168" height="33.4281" fill="#F8F8F6" stroke="#DBDBDB" stroke-width="0.777397"/>
+  <text class="area-label" x="226.7" y="95.3" text-anchor="middle" dominant-baseline="middle">소나무숲</text>
+
+  <path d="M51.2432 20.2363L52.3105 59.2661C66.7688 59.5456 99.5732 60.1198 115.124 60.1807C130.675 60.2417 151.13 58.529 159.414 57.665L158.499 21.3795L51.2432 20.2363Z" fill="#F8F8F6" stroke="#E9E9E8" stroke-width="0.777397"/>
+
+  <g id="booths" data-zone="A">
+    <g id="booth-1" data-booth-no="1"><rect class="booth-fill" x="170.389" y="129.091" width="14.7705" height="25.6541"/><text class="booth-label" x="177.774" y="141.9" text-anchor="middle" dominant-baseline="middle">1</text></g>
+    <g id="booth-2" data-booth-no="2"><rect class="booth-fill" x="189.822" y="129.091" width="14.7705" height="25.6541"/><text class="booth-label" x="197.207" y="141.9" text-anchor="middle" dominant-baseline="middle">2</text></g>
+    <g id="booth-3" data-booth-no="3"><rect class="booth-fill" x="209.256" y="129.091" width="14.7705" height="25.6541"/><text class="booth-label" x="216.641" y="141.9" text-anchor="middle" dominant-baseline="middle">3</text></g>
+    <g id="booth-4" data-booth-no="4"><rect class="booth-fill" x="227.916" y="129.091" width="14.7705" height="25.6541"/><text class="booth-label" x="235.301" y="141.9" text-anchor="middle" dominant-baseline="middle">4</text></g>
+    <g id="booth-5" data-booth-no="5"><rect class="booth-fill" x="247.35" y="129.091" width="14.7705" height="25.6541"/><text class="booth-label" x="254.735" y="141.9" text-anchor="middle" dominant-baseline="middle">5</text></g>
+    <g id="booth-6" data-booth-no="6"><rect class="booth-fill" x="266.008" y="129.091" width="14.7705" height="25.6541"/><text class="booth-label" x="273.393" y="141.9" text-anchor="middle" dominant-baseline="middle">6</text></g>
+    <g id="booth-7" data-booth-no="7"><rect class="booth-fill" x="284.686" y="129.389" width="14.7705" height="25.6541"/><text class="booth-label" x="292.071" y="142.2" text-anchor="middle" dominant-baseline="middle">7</text></g>
+    <g id="booth-8" data-booth-no="8"><rect class="booth-fill" x="170.389" y="178.389" width="14.7705" height="25.6541"/><text class="booth-label" x="177.774" y="191.2" text-anchor="middle" dominant-baseline="middle">8</text></g>
+    <g id="booth-9" data-booth-no="9"><rect class="booth-fill" x="189.822" y="178.389" width="14.7705" height="25.6541"/><text class="booth-label" x="197.207" y="191.2" text-anchor="middle" dominant-baseline="middle">9</text></g>
+    <g id="booth-10" data-booth-no="10"><rect class="booth-fill" x="208.252" y="178.389" width="14.7705" height="25.6541"/><text class="booth-label" x="215.637" y="191.2" text-anchor="middle" dominant-baseline="middle">10</text></g>
+    <g id="booth-11" data-booth-no="11"><rect class="booth-fill" x="227.252" y="178.389" width="14.7705" height="25.6541"/><text class="booth-label" x="234.637" y="191.2" text-anchor="middle" dominant-baseline="middle">11</text></g>
+    <g id="booth-12" data-booth-no="12"><rect class="booth-fill" x="246.252" y="178.389" width="14.7705" height="25.6541"/><text class="booth-label" x="253.637" y="191.2" text-anchor="middle" dominant-baseline="middle">12</text></g>
+    <g id="booth-13" data-booth-no="13"><rect class="booth-fill" x="265.389" y="178.389" width="14.7705" height="25.6541"/><text class="booth-label" x="272.774" y="191.2" text-anchor="middle" dominant-baseline="middle">13</text></g>
+  </g>
+</svg>

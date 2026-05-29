@@ -1,0 +1,40 @@
+<svg width="350" height="230" viewBox="0 0 350 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .booth-fill { fill: #E4E4E4; stroke: #DBDBDB; stroke-width: 0.777397; }
+      g.is-active .booth-fill { fill: #0B89FF; stroke: #0B89FF; stroke-width: 1.1; }
+      .booth-label { fill: #808080; font-size: 9px; font-weight: 700; font-family: system-ui, sans-serif; pointer-events: none; }
+      g.is-active .booth-label { fill: #FFFFFF; }
+      .area-label { fill: #9B9B9B; font-size: 7.5px; font-weight: 600; font-family: system-ui, sans-serif; pointer-events: none; }
+      .landmark-fill { fill: #F8F8F6; stroke: #DBDBDB; stroke-width: 0.777397; }
+    </style>
+  </defs>
+  <rect width="350" height="230" fill="white"/>
+
+  <text class="area-label" x="8" y="12" font-size="8" font-weight="700">C구역</text>
+
+  <path d="M-198.483 50.9469H-217.141C-207.034 0.416168 -210.144 -48.9487 -212.865 -74.9915C-215.042 -93.8257 -215.068 -107.253 -214.808 -110.363C-209.522 -145.812 -176.068 -154.675 -160.002 -154.675C-78.7639 -158.95 86.9772 -167.579 100.037 -167.89C113.098 -168.201 117.399 -152.731 117.918 -144.957C121.649 -130.342 111.18 -126.947 105.479 -127.077L109.366 -115.805L-1.41289 -110.363C14.757 -87.5288 16.4673 -64.6261 15.3012 -54.7791H-4.13377V-36.5103L-24.3461 -39.6199L-30.5653 -22.1284L-19.6817 -14.7431C-27.4557 -0.128082 -38.728 10.2631 -43.3923 13.6319C-75.4211 43.4839 -127.999 35.399 -150.284 27.625L-165.444 38.5086L-198.483 41.6181V50.9469Z" fill="#F8F8F6" stroke="#DBDBDB" stroke-width="0.777397"/>
+  <rect class="landmark-fill" x="72" y="28" width="58" height="22" rx="4"/>
+  <text class="area-label" x="101" y="39" text-anchor="middle" dominant-baseline="middle">흡연장</text>
+
+  <path d="M333.493 -77.3363L292.23 -103C283.571 -94.3554 259.76 -41.7674 248.937 -16.554L239.128 -20.6062L221.879 46.9297L228.305 48.9558C206.117 110.278 204.629 208.228 206.659 249.538L231.011 247.174V254.603H250.29V245.148H256.039C255.228 226.778 257.731 170.633 259.083 144.857L270.921 85.7629L289.524 90.8281C294.394 64.0839 312.523 14.8502 320.979 -6.42363L303.053 -14.1903C309.547 -33.6406 326.052 -64.392 333.493 -77.3363Z" fill="#E4E4E4" stroke="#E9E9E8" stroke-width="0.777397"/>
+  <text class="area-label" x="268" y="72" text-anchor="middle" dominant-baseline="middle">디자인대학</text>
+
+  <path d="M95.4803 204.483H-217.918V255.791H139.685C139.685 216.113 110.215 205.053 95.4803 204.483Z" fill="#F8F8F6" stroke="#DBDBDB" stroke-width="1.25907"/>
+
+  <g id="booths" data-zone="C">
+    <g id="booth-12" data-booth-no="12"><rect class="booth-fill" x="-9.18552" y="60.2757" width="15.5479" height="25.6541"/></g>
+    <g id="booth-13" data-booth-no="13"><rect class="booth-fill" x="10.2481" y="60.2757" width="14.7705" height="25.6541"/></g>
+    <g id="booth-14" data-booth-no="14"><rect class="booth-fill" x="28.9063" y="60.2757" width="15.5479" height="25.6541"/></g>
+    <g id="booth-1" data-slot="A-1-15"><rect class="booth-fill" x="77.1035" y="60.2757" width="15.5479" height="25.6541"/></g>
+    <g id="booth-2" data-slot="A-1-16"><rect class="booth-fill" x="96.541" y="60.2757" width="14.7705" height="25.6541"/></g>
+    <g id="booth-3" data-slot="A-1-17"><rect class="booth-fill" x="115.197" y="60.2757" width="15.5479" height="25.6541"/></g>
+    <g id="booth-4" data-slot="A-1-18"><rect class="booth-fill" x="142.389" y="94.3887" width="15.5479" height="25.6541"/></g>
+    <g id="booth-10" data-slot="A-2-17"><rect class="booth-fill" x="142.389" y="126.389" width="14.7705" height="25.6541"/></g>
+    <g id="booth-5" data-slot="A-2-12"><rect class="booth-fill" x="39.0137" y="161.337" width="14.7705" height="25.6541"/></g>
+    <g id="booth-6" data-slot="A-2-13"><rect class="booth-fill" x="58.4473" y="161.337" width="14.7705" height="25.6541"/></g>
+    <g id="booth-7" data-slot="A-2-14"><rect class="booth-fill" x="77.1035" y="161.337" width="14.7705" height="25.6541"/></g>
+    <g id="booth-8" data-slot="A-2-15"><rect class="booth-fill" x="95.7617" y="161.337" width="14.7705" height="25.6541"/></g>
+    <g id="booth-9" data-slot="A-2-16"><rect class="booth-fill" x="115.197" y="161.337" width="14.7705" height="25.6541"/></g>
+  </g>
+</svg>
